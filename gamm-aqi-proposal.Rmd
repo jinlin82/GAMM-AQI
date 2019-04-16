@@ -35,7 +35,7 @@ link-citations: true
 
 **TODO**
 
-- [ ] 
+- [ ] 要理论方面和应用方面并重，也要谈解决的实际问题
 
 
 ```{r setup, echo=F}
