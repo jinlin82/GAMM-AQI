@@ -32,6 +32,15 @@
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight0.8\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 
 % Prevent slide breaks in the middle of a paragraph:
 \widowpenalties 1 10000
@@ -208,36 +217,48 @@
 
 \begin{frame}{选题背景}
 
-（1）广义可加混合模型既考虑了协变量的线性影响，又考虑了非线性影响，同时考虑了随机
-效应，在实际问题分析中，模型设定可能更为精确。
-
-（2）GAMM的推断基于似然原理，会涉及高维积分的计算。惩罚拟似然（PQL）是经常采用的
-一种估计方法，但在使用中逐渐暴露出一些问题。相应的，基于马尔可夫链蒙特卡罗（MCMC）
-的贝叶斯估计备受关注。在MCMC的抽样方法中，Neal（2003）提出切片抽样比Gibbs采样实施
-起来更加简单，比M-H抽样更加有效。
-
-（3）为证明GAMM的实用性，考虑GAMM在空气质量方面的应用。近年来，空气质量问题引起了社会
-各界的广泛关注，中国粗放型的经济发展模式使空气质量在逐年恶化，空气质量状况的日益下降
-警醒我们须及时采取环境保护的相关措施。这就需要我们找到空气质量的影响因素，进而根据影响
-因素及影响程度的大小进行相应的处理。
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  实际问题分析中，GAMM模型设定可能更为精确。
+\item
+  基于切片抽样的MCMC方法在GAMM的推断中可能更为精确。
+\item
+  空气质量在逐年恶化，我们须明确空气质量的影响因素，及时采取环境保护措施。
+\end{enumerate}
 
 \end{frame}
 
 \begin{frame}{选题意义}
 
-（1）理论意义
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  理论意义
+\end{enumerate}
 
-用基于切片抽样的MCMC方法与PQL方法进行估计精度的比较，可以验证GAMM更加精确的参数估计
-方法，为用GAMM进行数据分析提供参考。
+\begin{itemize}
+\tightlist
+\item
+  比较两种参数估计方法，为用GAMM进行数据分析提供参考 。
+\end{itemize}
 
-（2）现实意义
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  现实意义
+\end{enumerate}
 
-一方面，以74个城市月度数据建立GAMM进行分析，选择精度较高的估计方法对所建立的模型进行
-估计，可以对空气质量做出更加精确的预测，进而为环境治理决策提供更加有效的支撑。
-
-另一方面，目前，空气污染非常严重，研究城市空气质量的影响因素，可以证明针对中国的实际
-情况，气象因素和经济因素对空气质量的具体影响效应，及时对短期内空气质量情况进行较为
-准确的简单预报，对空气质量的改善有极大的推动作用。
+\begin{itemize}
+\tightlist
+\item
+  GAMM与空气质量研究相结合，可以对空气质量做出更加精确的预测，进而为环境治理决策
+  提供更加有效的支撑，对空气质量的改善有极大的推动作用。
+\end{itemize}
 
 \end{frame}
 
@@ -245,45 +266,97 @@
 
 \begin{frame}{主要内容}
 
-第一部分、第二部分：
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  第一部分：导论
+\end{enumerate}
 
-\includegraphics[width=8.39in]{2}
+\begin{itemize}
+\tightlist
+\item
+  提出研究背景及选题意义，梳理国内外相关文献，明确研究目的。
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  第二部分：模型概述及参数估计方法
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  GAMM概述：LMM、GLMM、GAMM
+\item
+  参数估计方法简介：惩罚拟似然（PQL）、基于切片抽样的MCMC方法
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  第三部分：模拟研究
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  模型描述：设定GAMM模型形式，给定参数真实值、非线性函数形式及随机效应方差成分，
+  考虑高斯、二项、泊松分布响应变量，建立高斯可加混合模型、二项可加混合模型、泊松
+  可加混合模型。
+\item
+  模拟结果比较：分别用PQL及基于切片抽样的MCMC方法对设定的模型进行参数估计，通过
+  均方误差的平方根比较参数估计精度，通过观察非线性函数和真实非线性函数的接近程度
+  判断非线性函数的拟合程度。
+\end{itemize}
 
 \end{frame}
 
 \begin{frame}{主要内容（续）}
 
-第三部分：
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  第四部分：基于74个城市的空气质量实证分析
 
-\includegraphics[width=7.51in]{3}
+  \begin{itemize}
+  \tightlist
+  \item
+    变量选择及数据说明：解释空气质量相关术语、选取经济社会因素、气象因素相关指标，
+    进行数据描述性分析，说明城市空气质量现状。
+  \item
+    以74个城市每月空气质量是否存在严重污染为因变量，以选定的指标为自变量建立
+    logistic回归模型、二项可加模型及二项可加混合模型。
+  \item
+    以74个城市每月空气质量为优的天数为因变量，以选定的指标为自变量建立泊松回归模型、
+    泊松可加模型及泊松可加混合模型。
+  \item
+    模型结果比较，选取最优模型，进行城市空气质量影响因素分析并做出预测。
+  \end{itemize}
+\item
+  第五部分：总结。
 
-\end{frame}
-
-\begin{frame}{主要内容（续）}
-
-第四部分：
-
-\includegraphics[width=12.79in]{4}
-
-\end{frame}
-
-\begin{frame}{主要内容（续）}
-
-第五部分：
-
-\includegraphics[width=2.82in]{5}
+  \begin{itemize}
+  \tightlist
+  \item
+    归纳结论，提出建议。
+  \item
+    说明研究的不足和未来的研究方向。
+  \end{itemize}
+\end{enumerate}
 
 \end{frame}
 
 \begin{frame}{基本思路}
 
-\includegraphics[width=7.74in]{6_1}
-
-\end{frame}
-
-\begin{frame}{基本思路（续）}
-
-\includegraphics[width=7.9in]{6_2}
+\includegraphics{sl.png}
 
 \end{frame}
 
@@ -306,12 +379,12 @@
     四、本文的主要贡献
   \end{itemize}
 \item
-  第一章 模型概述及参数估计方法
+  第一章 ~ 模型概述及参数估计方法
 
   \begin{itemize}
   \tightlist
   \item
-    第一节 GAMM概述
+    第一节 ~ GAMM概述
 
     \begin{itemize}
     \tightlist
@@ -323,7 +396,7 @@
       三、广义可加混合模型（GAMM）
     \end{itemize}
   \item
-    第二节 参数估计方法简介
+    第二节 ~ 参数估计方法简介
 
     \begin{itemize}
     \tightlist
@@ -342,12 +415,12 @@
 \begin{itemize}
 \tightlist
 \item
-  第二章 蒙特卡罗模拟研究
+  第二章 ~ 蒙特卡罗模拟研究
 
   \begin{itemize}
   \tightlist
   \item
-    第一节 模型描述
+    第一节 ~ 模型描述
 
     \begin{itemize}
     \tightlist
@@ -359,7 +432,7 @@
       三、基于切片抽样的MCMC估计模拟设计
     \end{itemize}
   \item
-    第二节 模拟结果比较
+    第二节 ~ 模拟结果比较
 
     \begin{itemize}
     \tightlist
@@ -380,12 +453,12 @@
 \begin{itemize}
 \tightlist
 \item
-  第三章 基于74个城市的空气质量实证分析
+  第三章 ~ 基于74个城市的空气质量实证分析
 
   \begin{itemize}
   \tightlist
   \item
-    第一节 变量选择及数据说明
+    第一节 ~ 变量选择及数据说明
 
     \begin{itemize}
     \tightlist
@@ -395,7 +468,7 @@
       二、数据来源及说明
     \end{itemize}
   \item
-    第二节 空气质量二分类响应变量可加混合模型的建立
+    第二节 ~ 空气质量二分类响应变量可加混合模型的建立
 
     \begin{itemize}
     \tightlist
@@ -409,7 +482,7 @@
       四、模型比较
     \end{itemize}
   \item
-    第三节 空气质量计数响应变量可加混合模型的建立
+    第三节 ~ 空气质量计数响应变量可加混合模型的建立
 
     \begin{itemize}
     \tightlist
@@ -423,7 +496,7 @@
       四、模型比较
     \end{itemize}
   \item
-    第四节 城市空气质量影响因素分析及预测
+    第四节 ~ 城市空气质量影响因素分析及预测
 
     \begin{itemize}
     \tightlist
@@ -462,14 +535,35 @@
 
 \begin{frame}{可能的创新点}
 
-（1）就参数估计方法来看，目前国内大部分学者在进行GAMM估计时基本上都是利用基于
-M-H抽样和Gibbs采样的MCMC方法，还未有人将基于切片抽样的MCMC估计方法应用于GAMM，
-且本文应用H.Pham在2018年最新提出的R包gammSlice进行更加精确的求解。
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  基于切片抽样MCMC估计方法的应用
+\end{enumerate}
 
-（2）就研究主题来看，通常对于空气质量的研究是基于31个省或部分城市的年度数据，
-用月度数据研究的相对较少，且研究方法一般集中于环境库兹涅茨曲线、面板回归模型等，
-还未涉及广义可加混合模型的应用。本文选取2014-2018年中国重点监测的74个城市的月度
-数据建立广义可加混合模型进行相应研究。
+\begin{itemize}
+\tightlist
+\item
+  目前国内大部分学者在进行GAMM估计时基本上都是利用基于M-H抽样和Gibbs采样的
+  MCMC方法，还未有人将基于切片抽样的MCMC估计方法应用于GAMM。
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  GAMM与空气质量研究相结合
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  通常对于空气质量的研究是基于31个省或部分城市的年度数据，用月度数据研究的
+  相对较少，且研究方法一般集中于环境库兹涅茨曲线、面板回归模型等，还未涉及广义
+  可加混合模型的应用。
+\end{itemize}
 
 \end{frame}
 
