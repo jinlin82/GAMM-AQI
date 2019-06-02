@@ -6,7 +6,9 @@
 $if(fontfamily)$
 \usepackage[$for(fontfamilyoptions)$$fontfamilyoptions$$sep$,$endfor$]{$fontfamily$}
 $else$
-\usepackage{lmodern}
+\newcommand\hmmax{0} %% 防止Too many math alphabets used in version normal.
+\newcommand\bmmax{0} %% 防止Too many math alphabets used in version normal.
+\usepackage{lmodern,bm}   % 必需出现在amsmath等包前面，否则会出错
 $endif$
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
@@ -259,7 +261,7 @@ $endfor$
 
 %\sloppy
 %\linespread{1.0}                           % 设置行距
-\setlength{\parindent}{18pt}
+\setlength{\parindent}{22pt}
 %\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
 
 
@@ -276,7 +278,6 @@ $endfor$
 \usepackage{wasysym}
 \usepackage{latexsym}
 \usepackage{amssymb}
-\usepackage{lmodern,bm}
 % Package hyperref omitted
 \usepackage{listings}
 \usepackage{tikz}
